@@ -1,0 +1,34 @@
+# Ignore environment files
+.env
+.env.*
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore virtual environment
+venv/
+env/
+.venv/
+
+uploads/
+*.pdf
+app.db
+interview_bot.db
+.cache/
+llm_cache.json
+
+interview-frontend/node_modules/
+interview-frontend/dist/
+interview-frontend/.vite/
+frontend/node_modules/
+node_modules/
+interview_bot_project/
+.nested_git_backups/
+tmp_pycache/
+.vscode/
+.pytest_cache/
+
+# Ignore markdown files (may contain secrets)
+*.md
+docs/

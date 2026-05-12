@@ -1,0 +1,2 @@
+"""Candidate route group."""
+
