@@ -156,7 +156,7 @@ export default function HRDashboardPage() {
         </div>
       )}
 
-      <main id="main-content" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 page-enter-delay-1">
+      <main id="main-content" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 page-enter-delay-1">
         <MetricCard title="Total Candidates" value={overview.total_candidates || 0} icon={Users} color="blue" />
         <MetricCard title="Shortlisted" value={overview.shortlisted_count || 0} icon={UserCheck} color="green" />
         <MetricCard title="Rejected" value={overview.rejected_count || 0} icon={UserX} color="red" />
@@ -243,7 +243,12 @@ export default function HRDashboardPage() {
         </div>
       </div>
 
-      <ChartCard title="Recent Candidates" subtitle="List view preview with ranking and recommendations.">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+        <div className="p-6 border-b border-slate-100 dark:border-slate-800/50">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white">Recent Candidates</h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">List view preview with ranking and recommendations.</p>
+        </div>
+        <div className="p-0">
         {tableLoading ? (
           <p role="status" className="center muted py-8">Loading candidates...</p>
         ) : (
@@ -253,7 +258,8 @@ export default function HRDashboardPage() {
             onScheduleCandidate={handleScheduleCandidate}
           />
         )}
-      </ChartCard>
+      </div>
+      </div>
 
       <div aria-live="polite" aria-atomic="true" className="sr-announcer" />
     </div>

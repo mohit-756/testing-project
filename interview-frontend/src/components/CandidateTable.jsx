@@ -23,12 +23,12 @@ export default function CandidateTable({ candidates, onDeleteCandidate, onSchedu
       <table className="w-full text-left border-collapse">
         <thead>
           <tr className="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
-            <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Candidate</th>
-            <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Role/Domain</th>
-            <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Resume Score</th>
-            <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
-            <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Decision</th>
-            <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Actions</th>
+            <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Candidate</th>
+            <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Role/Domain</th>
+            <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Resume Score</th>
+            <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+            <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Decision</th>
+            <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Actions</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -42,7 +42,7 @@ export default function CandidateTable({ candidates, onDeleteCandidate, onSchedu
             <tr key={candidate.uid || candidate.candidate_uid || candidate.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
               <td className="px-6 py-4">
                 <div className="flex items-center">
-                  <img src={candidate.avatar} alt="" className="w-9 h-9 rounded-full bg-slate-100 mr-3" />
+                  <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold mr-3">{candidate.name?.[0]?.toUpperCase() || "C"}</div>
                   <div>
                     <div className="font-medium text-slate-900 dark:text-white">{candidate.name}</div>
                     <div className="text-xs text-slate-500 dark:text-slate-400">{candidate.email}</div>
@@ -68,7 +68,7 @@ export default function CandidateTable({ candidates, onDeleteCandidate, onSchedu
                 <StatusBadge status={candidate.finalDecision || candidate.status} />
               </td>
               <td className="px-6 py-4">
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-end space-x-2">
                   <Link
                     to={`/hr/candidates/${candidate.uid || candidate.candidate_uid}`}
                     aria-label={`Open ${candidate.name || "candidate"} profile`}
