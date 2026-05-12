@@ -379,9 +379,9 @@ export default function CandidateDashboardPage() {
                   <p className="text-sm text-slate-500 dark:text-slate-400">Jobs you've applied to</p>
                 </div>
               </div>
-              <div className="divide-y divide-slate-100 dark:divide-slate-800">
+              <div className="p-6 space-y-6">
                 {applications.map((app) => (
-                  <div key={app.jd_id} className="p-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                  <div key={app.jd_id} className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 border border-slate-100 dark:border-slate-800 rounded-xl">
                     <div className="flex items-center gap-3">
                       <div className={`w-2 h-2 rounded-full ${app.status === 'selected' ? 'bg-emerald-500' : app.status === 'rejected' ? 'bg-red-500' : 'bg-amber-500'}`} />
                       <div>
