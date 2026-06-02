@@ -55,7 +55,7 @@ def extract_text_from_file(file_path):
                 text = re.sub(r'\n{3,}', '\n\n', text)  # Collapse excessive breaks
                 text = re.sub(r'[\x00-\x1F\x7F]+', '', text)  # Remove control chars
                 return text
-            except Exception as e:
+            except Exception:
                 # fallback to PyPDF2 if fitz fails
                 try:
                     import PyPDF2
@@ -65,7 +65,7 @@ def extract_text_from_file(file_path):
                         text = re.sub(r'\n{3,}', '\n\n', text)
                         text = re.sub(r'[\x00-\x1F\x7F]+', '', text)
                         return text
-                except Exception as e2:
+                except Exception:
                     return ""
 
         elif file_path.endswith(".docx"):
@@ -76,7 +76,7 @@ def extract_text_from_file(file_path):
                 text = re.sub(r'\n{3,}', '\n\n', text)
                 text = re.sub(r'[\x00-\x1F\x7F]+', '', text)
                 return text
-            except Exception as e:
+            except Exception:
                 return ""
 
         elif file_path.endswith(".txt"):

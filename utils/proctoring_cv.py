@@ -12,7 +12,6 @@ Comprehensive proctoring with:
 from __future__ import annotations
 
 import time
-import base64
 from pathlib import Path
 from typing import Any, Optional
 import numpy as np
@@ -34,11 +33,10 @@ EMBEDDING_MODEL = "ArcFace"
 
 try:
     from deepface import DeepFace as DF
-    from deepface.deepface import DeepFace as DeepFaceCore
     DeepFace = DF
     _face_analyzer = None
     _liveness_analyzer = None
-except Exception as e:
+except Exception:
     DeepFace = None
 
 _LAST_FRAMES: dict[int, Any] = {}

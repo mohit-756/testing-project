@@ -1,6 +1,5 @@
 import requests
 import logging
-from pathlib import Path
 from core.config import config
 
 logger = logging.getLogger(__name__)

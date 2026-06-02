@@ -17,7 +17,7 @@ from sqlalchemy.orm import Session, joinedload
 from ai_engine.phase1.scoring import compute_interview_scoring, compute_resume_skill_match
 from ai_engine.phase1.matching import extract_skills_from_jd, extract_text_from_file
 from database import get_db
-from services.llm.client import extract_jd_requirements, extract_skills as llm_extract_skills
+from services.llm.client import extract_jd_requirements
 from models import Candidate, InterviewSession, JobDescription, Result, ApplicationStageHistory
 from routes.common import (
     UPLOAD_DIR,
@@ -540,7 +540,6 @@ def hr_dashboard_calendar(
     db: Session = Depends(get_db),
 ) -> dict[str, object]:
     from datetime import datetime, timedelta
-    from sqlalchemy import and_
     
     if not month:
         month = datetime.now().month

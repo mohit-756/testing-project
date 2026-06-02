@@ -67,7 +67,7 @@ export default function HRCandidateDetailPage() {
 
   const candidate = data?.candidate || null;
   const latestApplication = data?.applications?.[0] || null;
-  const parsedResume = candidate?.parsedResume || {};
+
   const stageHistory = latestApplication?.stage_history || [];
   const interviewSummary = latestApplication?.latest_session?.evaluation_summary || {};
   const scoreBreakdown = latestApplication?.score_breakdown || {};

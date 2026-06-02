@@ -32,7 +32,7 @@ from routes.schemas import CandidateSelectJDBody, ScheduleInterviewBody
 from services.practice import build_practice_kit
 from services.resume_advice import build_resume_advice
 
-from utils.email_service import send_interview_email, send_eligibility_email, send_interview_confirmation_email
+from utils.email_service import send_eligibility_email, send_interview_confirmation_email
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
@@ -327,7 +327,7 @@ def upload_resume(
     try:
         with resume_path.open("wb") as buffer:
             shutil.copyfileobj(resume.file, buffer)
-        logger.info(f"UPLOAD_RESUME file saved successfully")
+        logger.info("UPLOAD_RESUME file saved successfully")
     except Exception as e:
         logger.error(f"UPLOAD_RESUME file save FAILED: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to save file: {str(e)}")
@@ -348,7 +348,7 @@ def upload_resume(
     db.commit()
     db.refresh(candidate)
 
-    logger.info(f"UPLOAD_RESUME calling evaluate_resume_for_job")
+    logger.info("UPLOAD_RESUME calling evaluate_resume_for_job")
     try:
         score, explanation, _ = evaluate_resume_for_job(candidate, selected_jd)
         logger.info(f"UPLOAD_RESUME evaluation done, score={score}")

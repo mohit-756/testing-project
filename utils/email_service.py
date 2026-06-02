@@ -1,6 +1,5 @@
 """Professional SMTP helper for Quadrant Technologies Recruitment correspondence."""
 
-import os
 import smtplib
 from datetime import datetime, timedelta, timezone
 from email.mime.text import MIMEText
@@ -56,7 +55,7 @@ def _format_interview_datetime(interview_datetime):
     tz = _interview_timezone()
     tz_name = str(tz.key) if hasattr(tz, 'key') else str(tz)
     tz_abbrev = {"Asia/Kolkata": "IST", "UTC": "UTC", "America/New_York": "ET"}.get(tz_name, tz_name[-4:] if len(tz_name) > 4 else tz_name)
-    return dt_utc.astimezone(tz).strftime(f"%A, %B %d, %Y at %I:%M %p") + f" ({tz_abbrev})"
+    return dt_utc.astimezone(tz).strftime("%A, %B %d, %Y at %I:%M %p") + f" ({tz_abbrev})"
 
 
 def _build_google_calendar_link(interview_datetime, role_title, interview_link):
@@ -330,7 +329,7 @@ Recruitment Team | Quadrant Technologies"""
         subject = f"Application Update - {role_title} | Quadrant Technologies"
         feedback_text = ""
         if feedback:
-            feedback_text = f"""
+            feedback_text = """
 
 INTERVIEW FEEDBACK:
 """

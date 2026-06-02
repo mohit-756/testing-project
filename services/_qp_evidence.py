@@ -3,7 +3,6 @@ from __future__ import annotations
 import re
 from collections import OrderedDict
 from collections.abc import Mapping
-from dataclasses import asdict
 
 # Date-range pattern: catches "Jan 2026 – Present", "March 2024 - Dec 2025", "2022 – 2023", etc.
 _DATE_RANGE_RE = re.compile(
