@@ -1,7 +1,6 @@
 """Health and authentication endpoints."""
 
 from fastapi import APIRouter, Depends, HTTPException, Request, UploadFile, File
-from fastapi.responses import StreamingResponse
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 from collections import defaultdict, deque

@@ -2,11 +2,11 @@
 
 import logging
 import secrets
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from sqlalchemy.orm import Session
 
-from database import get_db, engine
+from database import engine
 from models import Result, Candidate, JobDescription
 from utils.email_service import send_reminder_24h_email, send_reminder_1h_email
 from routes.common import interview_entry_url

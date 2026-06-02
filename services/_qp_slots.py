@@ -4,8 +4,6 @@ import re
 
 from services._qp_evidence import (
     _clean,
-    _contains_metric,
-    _dedupe,
     _evidence_priority,
     _projectish_phrase,
     _sanitize_evidence_text,
@@ -17,7 +15,6 @@ from services._qp_structs import (
     _CITY_LOCATION_RE,
     NAMEY_HEADER_PATTERN,
     PlannerContext,
-    StructuredResume,
     EvidenceItem,
 )
 

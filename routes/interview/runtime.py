@@ -39,7 +39,7 @@ from services.question_generation import build_question_bundle
 
 from sqlalchemy.orm import Session
 
-from ai_engine.phase3.question_flow import compute_dynamic_seconds, normalize_result_questions
+from ai_engine.phase3.question_flow import normalize_result_questions
 
 from database import get_db
 from core.config import config
@@ -57,13 +57,10 @@ from models import (
 from routes.common import interview_access_state, interview_entry_url, interview_schedule_state, utc_isoformat
 from routes.dependencies import SessionUser, require_role
 
-from services.pipeline import record_stage_change
 
-from services.scoring import build_application_score, evaluate_answer, summarize_interview
 
 from routes.schemas import InterviewAnswerBody, InterviewEventBody, InterviewStartBody
 
-from routes.interview.evaluation import run_evaluation_task
 
 
 

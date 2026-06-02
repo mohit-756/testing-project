@@ -11,7 +11,7 @@ export default function ResetPasswordPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  const [showPw, setShowPw] = useState(false);
+  const [showPw, _setShowPw] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();

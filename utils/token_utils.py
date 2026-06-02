@@ -2,7 +2,7 @@ import time
 import json
 import logging
 import os
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from threading import Lock
 from pathlib import Path
 

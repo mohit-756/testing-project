@@ -2,7 +2,6 @@ from __future__ import annotations
 import logging
 from datetime import datetime
 from io import BytesIO
-from typing import Any
 from fpdf import FPDF
 from sqlalchemy.orm import Session
 from models import InterviewSession, Candidate, Result, InterviewQuestion, ProctorEvent
@@ -97,15 +96,15 @@ def generate_interview_pdf(session: InterviewSession, db: Session, return_s3_url
     pdf.cell(0, 10, "1. Candidate Information", ln=True, fill=True)
     pdf.set_font("helvetica", "", 11)
     pdf.ln(2)
-    pdf.cell(50, 8, f"Name:", border=0)
+    pdf.cell(50, 8, "Name:", border=0)
     name = sanitize_text(candidate.name if candidate else 'N/A')
     pdf.cell(0, 8, f"{name}", border=0, ln=True)
-    pdf.cell(50, 8, f"Email:", border=0)
+    pdf.cell(50, 8, "Email:", border=0)
     email = sanitize_text(candidate.email if candidate else 'N/A')
     pdf.cell(0, 8, f"{email}", border=0, ln=True)
-    pdf.cell(50, 8, f"Status:", border=0)
+    pdf.cell(50, 8, "Status:", border=0)
     pdf.cell(0, 8, f"{session.status.upper()}", border=0, ln=True)
-    pdf.cell(50, 8, f"Final Weighted Score:", border=0)
+    pdf.cell(50, 8, "Final Weighted Score:", border=0)
     pdf.set_font("helvetica", "B", 11)
     pdf.cell(0, 8, f"{result.final_score if result and result.final_score is not None else 'N/A'} / 100", border=0, ln=True)
     pdf.ln(5)
@@ -178,9 +177,9 @@ def generate_interview_pdf(session: InterviewSession, db: Session, return_s3_url
     pdf.ln(2)
     
     suspicious_events = [e for e in proctor_events if e.event_type in {"no_face", "multi_face", "face_mismatch", "tab_switch", "paste_detected"}]
-    pdf.cell(60, 6, f"Total Warnings Issued:")
+    pdf.cell(60, 6, "Total Warnings Issued:")
     pdf.cell(0, 6, f"{session.warning_count}", ln=True)
-    pdf.cell(60, 6, f"Suspicious Events Detected:")
+    pdf.cell(60, 6, "Suspicious Events Detected:")
     pdf.cell(0, 6, f"{len(suspicious_events)}", ln=True)
     
     if suspicious_events:

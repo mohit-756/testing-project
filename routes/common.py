@@ -5,7 +5,6 @@ from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse
 import logging
 from datetime import datetime, timedelta, timezone
-import os
 import re
 from pathlib import Path
 from urllib.parse import quote_plus
@@ -239,7 +238,6 @@ def generate_candidate_uid(db: Session) -> str:
     
     Returns sequential UID that increments each time.
     """
-    from sqlalchemy import text
     
     now = datetime.utcnow()
     month = now.month
@@ -441,7 +439,7 @@ def _load_jd_text(jd_text_value: str) -> str:
         logger.warning(f"_load_jd_text received JSON instead of text, returning empty: {raw[:100]}")
         return ""
     if len(raw) > 1000 and "job_title" in raw and "skills" in raw:
-        logger.warning(f"_load_jd_text received JD JSON string, returning empty")
+        logger.warning("_load_jd_text received JD JSON string, returning empty")
         return ""
     possible_path = Path(raw)
     if possible_path.is_file():

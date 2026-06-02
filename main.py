@@ -15,7 +15,6 @@ FIXES applied:
 from core.config import config
 import logging
 import threading
-from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -26,17 +25,15 @@ from starlette.responses import Response
 from sqlalchemy import text
 from starlette.middleware.sessions import SessionMiddleware
 
-from database import SessionLocal, engine
-from models import Base, Candidate
+from database import engine
+from models import Base
 from routes.api_routes import api_router
-from routes.common import ensure_candidate_profile
 
 
 
 logger = logging.getLogger(__name__)
 
 import uuid
-from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi import Request, Response
 
 app = FastAPI(title="Interview Bot API", version="1.0.0")
@@ -131,7 +128,7 @@ Base.metadata.create_all(bind=engine)
 
 def _run_migrations():
     """Add new columns to existing tables that SQLAlchemy create_all won't touch."""
-    from sqlalchemy import inspect, text
+    from sqlalchemy import inspect
     inspector = inspect(engine)
     with engine.begin() as conn:
         if "candidates" in inspector.get_table_names():

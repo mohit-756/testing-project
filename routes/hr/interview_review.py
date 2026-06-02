@@ -22,7 +22,7 @@ from collections import defaultdict
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from fastapi.responses import FileResponse, RedirectResponse, StreamingResponse
 from pydantic import BaseModel, Field
-from sqlalchemy import case, func
+
 from sqlalchemy.orm import Session, joinedload
 
 from ai_engine.phase1.scoring import compute_answer_scorecard
